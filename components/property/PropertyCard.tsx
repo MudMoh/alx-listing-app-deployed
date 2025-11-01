@@ -1,21 +1,20 @@
 import React from 'react';
-
-interface Property {
-  id: string;
-  name: string;
-  // Add other properties as needed based on your API response
-}
+import { PropertyProps } from '../../interfaces'; // Adjust path as needed
 
 interface PropertyCardProps {
-  property: Property;
+  property: PropertyProps;
 }
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
   return (
     <div className="border p-4 rounded-lg shadow-md">
       <h3 className="text-xl font-semibold">{property.name}</h3>
-      <p>ID: {property.id}</p>
-      {/* Add more property details here */}
+      <p>{property.address.city}, {property.address.country}</p>
+      <p>Rating: {property.rating} stars</p>
+      <p>Price: ${property.price} / night</p>
+      {property.image && (
+        <img src={property.image} alt={property.name} className="w-full h-48 object-cover mt-2 rounded-md" />
+      )}
     </div>
   );
 };

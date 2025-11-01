@@ -10,6 +10,7 @@ export interface ButtonProps {
 }
 
 export interface PropertyProps {
+  id: string;
   name: string;
   address: {
     state: string;
