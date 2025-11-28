@@ -15,12 +15,6 @@ const PropertyDetail: React.FC<{ property: PropertyProps }> = ({ property }) => 
         {/* Add more images */}
       </div>
 
-      {/* Description */}
-      <div className="mt-4">
-        <h2 className="text-2xl font-semibold">Description</h2>
-        <p>{property.description}</p>
-      </div>
-
       {/* Amenities */}
       <div className="mt-4">
         <h2 className="text-2xl font-semibold">What this place offers</h2>
@@ -31,6 +25,22 @@ const PropertyDetail: React.FC<{ property: PropertyProps }> = ({ property }) => 
             </li>
           ))}
         </ul>
+      </div>
+
+      {/* Offers */}
+      <div className="mt-4">
+        <h2 className="text-2xl font-semibold">Property Details</h2>
+        <div className="flex space-x-4 mt-2">
+          <span>🛏️ {property.offers.bed} Beds</span>
+          <span>🚿 {property.offers.shower} Bathrooms</span>
+          <span>👥 {property.offers.occupants} Guests</span>
+        </div>
+      </div>
+
+      {/* Price */}
+      <div className="mt-4">
+        <h2 className="text-3xl font-bold">${property.price} / night</h2>
+        {property.discount && <span className="text-green-600">Save {property.discount}%</span>}
       </div>
     </div>
   );
