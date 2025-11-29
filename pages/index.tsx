@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import PropertyCard from "@/components/property/PropertyCard";
 import { PropertyProps } from "@/interfaces";
+import { PROPERTYLISTINGSAMPLE } from "@/constants";
 import Link from "next/link";
 
 export default function Home() {
@@ -11,10 +12,11 @@ export default function Home() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/properties`);
+        const response = await axios.get("/api/properties");
         setProperties(response.data);
       } catch (error) {
         console.error("Error fetching properties:", error);
+        setProperties(PROPERTYLISTINGSAMPLE);
       } finally {
         setLoading(false);
       }
